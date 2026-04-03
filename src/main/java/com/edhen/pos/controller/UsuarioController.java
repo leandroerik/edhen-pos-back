@@ -1,8 +1,7 @@
 package com.edhen.pos.controller;
 
 import com.edhen.pos.entity.Usuario;
-import com.edhen.pos.repository.UsuarioRepository;
-import com.edhen.pos.repository.TiendaRepository;
+import com.edhen.pos.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,26 +12,30 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private TiendaRepository tiendaRepository;
+    private UsuarioService usuarioService;
 
     @PostMapping
     public Usuario crear(@RequestBody Usuario usuario) {
-
-        // asegurar que la tienda existe
-        if (usuario.getTienda() != null && usuario.getTienda().getId() != null) {
-            usuario.setTienda(
-                    tiendaRepository.findById(usuario.getTienda().getId()).orElseThrow()
-            );
-        }
-
-        return usuarioRepository.save(usuario);
+        return usuarioService.crearUsuario(usuario);
     }
 
     @GetMapping
     public List<Usuario> listar() {
-        return usuarioRepository.findAll();
+        return usuarioService.listarUsuarios();
+    }
+
+    @GetMapping("/{id}")
+    public Usuario obtener(@PathVariable Long id) {
+        return usuarioService.obtenerUsuarioPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public Usuario actualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+        return usuarioService.actualizarUsuario(id, usuario);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        usuarioService.eliminarUsuario(id);
     }
 }

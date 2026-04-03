@@ -1,0 +1,89 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║             🎯 COMIENZA A PROBAR EN 3 PASOS                   ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+PASO 1️⃣  - EJECUTAR LA APP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abre PowerShell y ejecuta:
+
+    cd D:\edhen\sistema-edhen\edhen-pos-back
+    .\run.ps1
+
+Selecciona: 1 (Ejecutar la aplicación)
+
+Espera a ver: ✅ "Started PosApplication in X seconds"
+
+
+PASO 2️⃣  - ABRE OTRA VENTANA DE POWERSHELL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+En la nueva ventana, ejecuta:
+
+    cd D:\edhen\sistema-edhen\edhen-pos-back
+    .\test.ps1
+
+Esta opción ejecuta TODAS las pruebas automáticamente ✨
+
+
+PASO 3️⃣  - ¡ESPERA LOS RESULTADOS!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Verás:
+  ✓ Todas las pruebas de datos
+  ✓ Búsquedas y filtros
+  ✓ Reportes
+  ✓ Validaciones
+  ✓ Descargas de PDF
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 PRUEBAS RÁPIDAS MANUALES (opcional)
+
+Ver venta:
+    curl http://localhost:8080/ventas/1
+
+Ver ticket en texto:
+    curl http://localhost:8080/documentos/ticket/1
+
+Descargar PDF:
+    curl -o ticket.pdf http://localhost:8080/documentos/ticket/1/pdf
+
+Ver reportes:
+    curl http://localhost:8080/reportes/total-vendido
+
+Crear cliente:
+    curl -X POST http://localhost:8080/clientes -H "Content-Type: application/json" -d '{"nombre":"Test","email":"test@gmail.com","telefono":"123","tipo":"LOCAL"}'
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTOS ÚTILES
+
+  • COMANDOS_RAPIDOS.md      → Copiar y pegar comandos
+  • GUIA_PRUEBAS.md           → Guía completa con ejemplos
+  • CHECKLIST_PRUEBAS.md      → Checklist de todas las pruebas
+  • LISTO_PARA_PROBAR_HOY.md  → Resumen extendido
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❓ ¿PROBLEMAS?
+
+Puerto ocupado:
+    mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"
+
+No compila:
+    mvn clean install
+
+No se conecta:
+    Asegúrate de ejecutar .\run.ps1 primero
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                      ¡AHORA A PROBAR! 🚀
+

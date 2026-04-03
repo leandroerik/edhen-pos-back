@@ -57,6 +57,10 @@ public class Producto {
         return activo;
     }
 
+    public boolean isActivo() {
+        return activo != null && activo;
+    }
+
     public Producto setActivo(Boolean activo) {
         this.activo = activo;
         return this;

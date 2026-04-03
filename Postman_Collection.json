@@ -1,0 +1,650 @@
+{
+  "info": {
+    "name": "EDHEN POS System",
+    "description": "Colección completa de endpoints del Sistema POS EDHEN",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "👥 CLIENTES",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clientes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clientes"]
+            }
+          }
+        },
+        {
+          "name": "Obtener por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clientes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"email\": \"juan@gmail.com\",\n  \"telefono\": \"1123456789\",\n  \"tipo\": \"LOCAL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clientes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clientes"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Pérez Actualizado\",\n  \"email\": \"juan.actualizado@gmail.com\",\n  \"telefono\": \"1123456789\",\n  \"tipo\": \"LOCAL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clientes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clientes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar por nombre",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clientes/buscar/nombre?nombre=María",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clientes", "buscar", "nombre"],
+              "query": [
+                {
+                  "key": "nombre",
+                  "value": "María"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👕 PRODUCTOS",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/productos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["productos"]
+            }
+          }
+        },
+        {
+          "name": "Obtener por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/productos/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["productos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear producto con SKUs",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Pantalón Premium\",\n  \"descripcion\": \"Pantalón de algodón premium\",\n  \"activo\": true,\n  \"skus\": [\n    {\n      \"codigoBarra\": \"PANT-NEGRO-M\",\n      \"precio\": 25000.0,\n      \"costo\": 12000.0,\n      \"stock\": 10\n    },\n    {\n      \"codigoBarra\": \"PANT-NEGRO-L\",\n      \"precio\": 25000.0,\n      \"costo\": 12000.0,\n      \"stock\": 15\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/productos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["productos"]
+            }
+          }
+        },
+        {
+          "name": "Productos activos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/productos/activos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["productos", "activos"]
+            }
+          }
+        },
+        {
+          "name": "Buscar por nombre",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/productos/buscar/nombre?nombre=Musculosa",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["productos", "buscar", "nombre"],
+              "query": [
+                {
+                  "key": "nombre",
+                  "value": "Musculosa"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📦 SKUs",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/skus",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["skus"]
+            }
+          }
+        },
+        {
+          "name": "Obtener por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/skus/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["skus", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear SKU",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigoBarra\": \"REMERA-ROJA-M\",\n  \"precio\": 15000.0,\n  \"costo\": 7500.0,\n  \"stock\": 20,\n  \"productoId\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/skus",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["skus"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👨‍💼 USUARIOS",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Crear usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Vendedor\",\n  \"email\": \"vendedor@edhen.com\",\n  \"password\": \"1234\",\n  \"rol\": \"VENDEDOR\",\n  \"activo\": true,\n  \"tiendaId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["usuarios"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏪 TIENDAS",
+      "item": [
+        {
+          "name": "Listar todas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/tiendas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["tiendas"]
+            }
+          }
+        },
+        {
+          "name": "Crear tienda",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"EDHEN San Isidro\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/tiendas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["tiendas"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "💰 VENTAS",
+      "item": [
+        {
+          "name": "Listar todas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/ventas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas"]
+            }
+          }
+        },
+        {
+          "name": "Obtener por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/ventas/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear venta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": 1,\n  \"usuarioId\": 1,\n  \"tiendaId\": 1,\n  \"tipoVenta\": \"LOCAL\",\n  \"items\": [\n    {\n      \"skuId\": 4,\n      \"cantidad\": 2\n    }\n  ],\n  \"pagos\": [\n    {\n      \"monto\": 24000.0,\n      \"metodo\": \"EFECTIVO\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/ventas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas"]
+            }
+          }
+        },
+        {
+          "name": "Buscar por cliente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/ventas/buscar/cliente/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas", "buscar", "cliente", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar por fecha",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/ventas/buscar/fecha?fechaInicio=2026-04-01&fechaFin=2026-04-30",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas", "buscar", "fecha"],
+              "query": [
+                {
+                  "key": "fechaInicio",
+                  "value": "2026-04-01"
+                },
+                {
+                  "key": "fechaFin",
+                  "value": "2026-04-30"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📄 DOCUMENTOS",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/documentos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["documentos"]
+            }
+          }
+        },
+        {
+          "name": "Ver ticket en texto",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/documentos/ticket/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["documentos", "ticket", "1"]
+            }
+          }
+        },
+        {
+          "name": "Descargar PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/documentos/ticket/1/pdf",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["documentos", "ticket", "1", "pdf"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 REPORTES",
+      "item": [
+        {
+          "name": "Total vendido",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/reportes/total-vendido",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["reportes", "total-vendido"]
+            }
+          }
+        },
+        {
+          "name": "Inventario",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/reportes/inventario",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["reportes", "inventario"]
+            }
+          }
+        },
+        {
+          "name": "Ventas por período",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/reportes/ventas?desde=2026-04-01&hasta=2026-04-30",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["reportes", "ventas"],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "2026-04-01"
+                },
+                {
+                  "key": "hasta",
+                  "value": "2026-04-30"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Productos más vendidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/reportes/productos-mas-vendidos?desde=2026-04-01&hasta=2026-04-30&top=5",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["reportes", "productos-mas-vendidos"],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "2026-04-01"
+                },
+                {
+                  "key": "hasta",
+                  "value": "2026-04-30"
+                },
+                {
+                  "key": "top",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Ganancias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/reportes/ganancias?desde=2026-04-01&hasta=2026-04-30",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["reportes", "ganancias"],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "2026-04-01"
+                },
+                {
+                  "key": "hasta",
+                  "value": "2026-04-30"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Top clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/reportes/top-clientes?desde=2026-04-01&hasta=2026-04-30&top=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["reportes", "top-clientes"],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "2026-04-01"
+                },
+                {
+                  "key": "hasta",
+                  "value": "2026-04-30"
+                },
+                {
+                  "key": "top",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "💾 ADMIN",
+      "item": [
+        {
+          "name": "Exportar BD",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/exportar-bdd",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["admin", "exportar-bdd"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,7 +1,7 @@
 package com.edhen.pos.controller;
 
 import com.edhen.pos.entity.Tienda;
-import com.edhen.pos.repository.TiendaRepository;
+import com.edhen.pos.service.TiendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +12,30 @@ import java.util.List;
 public class TiendaController {
 
     @Autowired
-    private TiendaRepository tiendaRepository;
+    private TiendaService tiendaService;
 
     @PostMapping
     public Tienda crear(@RequestBody Tienda tienda) {
-        return tiendaRepository.save(tienda);
+        return tiendaService.crearTienda(tienda);
     }
 
     @GetMapping
     public List<Tienda> listar() {
-        return tiendaRepository.findAll();
+        return tiendaService.listarTiendas();
+    }
+
+    @GetMapping("/{id}")
+    public Tienda obtener(@PathVariable Long id) {
+        return tiendaService.obtenerTiendaPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public Tienda actualizar(@PathVariable Long id, @RequestBody Tienda tienda) {
+        return tiendaService.actualizarTienda(id, tienda);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        tiendaService.eliminarTienda(id);
     }
 }

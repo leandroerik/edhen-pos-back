@@ -1,8 +1,7 @@
 package com.edhen.pos.controller;
 
 import com.edhen.pos.entity.Producto;
-import com.edhen.pos.entity.SKU;
-import com.edhen.pos.repository.ProductoRepository;
+import com.edhen.pos.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,23 +12,52 @@ import java.util.List;
 public class ProductoController {
 
     @Autowired
-    private ProductoRepository productoRepository;
+    private ProductoService productoService;
 
     @PostMapping
     public Producto crear(@RequestBody Producto producto) {
-
-        // 🔥 asociar SKUs correctamente
-        if (producto.getSkus() != null) {
-            for (SKU sku : producto.getSkus()) {
-                sku.setProducto(producto);
-            }
-        }
-
-        return productoRepository.save(producto);
+        return productoService.crearProducto(producto);
     }
 
     @GetMapping
     public List<Producto> listar() {
-        return productoRepository.findAll();
+        return productoService.listarProductos();
+    }
+
+    @GetMapping("/{id}")
+    public Producto obtener(@PathVariable Long id) {
+        return productoService.obtenerProductoPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public Producto actualizar(@PathVariable Long id, @RequestBody Producto producto) {
+        return productoService.actualizarProducto(id, producto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        productoService.eliminarProducto(id);
+    }
+
+    // 🔍 BÚSQUEDAS Y FILTROS
+
+    @GetMapping("/buscar/nombre")
+    public List<Producto> buscarPorNombre(@RequestParam String nombre) {
+        return productoService.buscarPorNombre(nombre);
+    }
+
+    @GetMapping("/buscar/descripcion")
+    public List<Producto> buscarPorDescripcion(@RequestParam String descripcion) {
+        return productoService.buscarPorDescripcion(descripcion);
+    }
+
+    @GetMapping("/activos")
+    public List<Producto> listarProductosActivos() {
+        return productoService.listarProductosActivos();
+    }
+
+    @GetMapping("/inactivos")
+    public List<Producto> listarProductosInactivos() {
+        return productoService.listarProductosInactivos();
     }
 }
